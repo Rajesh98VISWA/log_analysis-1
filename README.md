@@ -3,19 +3,23 @@
 ## Description
 Log Analysis project for the Udacity Full Stack Nanodegree. The project consists of answering three questions given a database and data.
 
+The data is for a fictional news website. The database is a PostgreSQL database and the schema contains three tables: authors, articles, and log.
+
 ## Prerequisites
 - Python 2
 - PostgreSQL
+- psycopg2
+- [Vagrant](https://www.vagrantup.com/)
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 ## Installing
-To create an environment to run the project, install Vagrant and Virtual Box following the instructions from Udacity.
+To create an environment to run the project, install Vagrant and Virtual Box.
 
-Start the Virtual Machine(VM) by running `vagrant up` in the directory that contains the "Vagrantfile" and then SSH into the VM using `vagrant ssh`. Navigate to `/vagrant` to access the files shared between the VM and your computer.
+Start the Virtual Machine(VM) by running `vagrant up` in the directory that contains the "Vagrantfile" and then SSH into the VM using `vagrant ssh`. The first time `vagrant up` is run the VM will be configured based on information in the "Vagrantfile". Navigate to `/vagrant` to access the files shared between the VM and your computer.
 
-Create the schema and load the data by running `psql -d news -i newsdata.sql`. The "newsdata.sql" file
-contains the SQL commands to create the schema and load data into the tables.
+Create the database schema and load the data by running `psql -d news -f newsdata.sql`. The "newsdata.sql" file contains the SQL commands to create the schema and load data into the tables.
 
-Note: When done with the VM, type exit and then `vagrant suspend` to pause the VM.
+Note: When done with the VM, type exit and then `vagrant suspend` to pause the VM and maintain the state of the VM.
 
 ## Running the Program
 To run the program, first create the views by running `psql -d news -f create_views.sql`. For completeness, below are the VIEW statements.
