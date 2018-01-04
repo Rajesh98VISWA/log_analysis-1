@@ -18,7 +18,7 @@ contains the SQL commands to create the schema and load data into the tables.
 Note: When done with the VM, type exit and then `vagrant suspend` to pause the VM.
 
 ## Running the Program
-To run the program, first create the views. These views are created in the `analyze_logs.py` file. For completeness, below are the VIEW statements.
+To run the program, first create the views by running `psql -d news -f create_views.sql`. For completeness, below are the VIEW statements.
 
 - Create View of Popular Articles
 ```
