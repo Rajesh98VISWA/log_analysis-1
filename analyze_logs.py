@@ -38,8 +38,8 @@ def favorite_articles():
 
     # print top three favorite articles
     print "Top three favorite articles:"
-    for i in range(3):
-        print "\""+result[i][0]+"\"", '---', result[i][1], "views"
+    for title, views in result:
+        print '"{}" --- {} views'.format(title, views)
 
 
 def popular_authors():
@@ -60,8 +60,8 @@ def popular_authors():
 
     # print authors of most popular articles
     print "\nMost popular article authors:"
-    for i in range(len(result)):
-        print "\""+result[i][0]+"\"", '---', result[i][1], "views"
+    for author, views in result:
+        print '"{}" --- {} views'.format(author, views)
 
 
 def error_request_threshold():
@@ -71,8 +71,8 @@ def error_request_threshold():
     """
     # Select which days had errors
     db, c = connect()
-    query = """SELECT per_failed_calls,
-    to_char(date, 'FMMonth DD, YYYY')
+    query = """SELECT to_char(date, 'FMMonth DD, YYYY'),
+    per_failed_calls
     FROM percent_failed_calls
     WHERE per_failed_calls > 1.0"""
     c.execute(query)
@@ -82,8 +82,8 @@ def error_request_threshold():
 
     # print days with more than 1% error request rate
     print "\nDays where more than 1% of requests lead to errors:"
-    for i in range(len(result)):
-        print "\""+result[i][1]+' --- '+str(result[i][0])+"% errors\""
+    for date, percent_error in result:
+        print '"{}" --- {}% error'.format(date, percent_error)
 
 
 if __name__ == '__main__':
