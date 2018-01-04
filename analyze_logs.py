@@ -17,16 +17,6 @@ def popular_articles_view():
     '''
     db = connect()
     c = db.cursor()
-    # query = "CREATE OR REPLACE VIEW favorite_articles as\
-    # SELECT count(*) as page_views, path \
-    # FROM log l \
-    # WHERE l.path in  \
-    #     (SELECT DISTINCT(log.path) \
-    #         FROM log\
-    #         WHERE log.path LIKE '/article/%') \
-    #         AND status LIKE '%200%' \
-    #         GROUP BY path \
-    #         ORDER BY page_views desc;"
     query = "CREATE OR REPLACE VIEW favorite_articles as \
     SELECT distinct(count(log.path)) as page_views, log.path \
     FROM log \
