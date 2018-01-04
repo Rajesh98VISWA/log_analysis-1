@@ -20,7 +20,7 @@ Note: When done with the VM, type exit and then `vagrant suspend` to pause the V
 ## Running the Program
 To run the program, first create the views. These views are created in the `analyze_logs.py` file. For completeness, below are the VIEW statements.
 
-Create View of Popular Articles
+- Create View of Popular Articles
 ```
 CREATE OR REPLACE VIEW favorite_articles as \
     SELECT distinct(count(log.path)) as page_views, log.path \
@@ -31,7 +31,7 @@ CREATE OR REPLACE VIEW favorite_articles as \
     ORDER BY page_views desc
 ```
 
-Create a view of total calls per day.
+- Create a view of total calls per day.
 ```
 CREATE OR REPLACE VIEW total_calls_per_day as
     SELECT COUNT(*) as all_calls, date_trunc('day', log.time) as date
@@ -39,7 +39,7 @@ CREATE OR REPLACE VIEW total_calls_per_day as
     GROUP BY date;
 ```
 
-Create a view of failed calls per day.
+- Create a view of failed calls per day.
 ```
 CREATE OR REPLACE VIEW failed_calls_per_day as
     SELECT COUNT(*) as failed_calls, date_trunc('day', log.time) as date
@@ -48,7 +48,7 @@ CREATE OR REPLACE VIEW failed_calls_per_day as
     GROUP BY date;
 ```
 
-Create a view of the percentage of failed calls per day.
+- Create a view of the percentage of failed calls per day.
 ```
 CREATE OR REPLACE VIEW percent_failed_calls as
     SELECT round((f.failed_calls/t.all_calls*1.0)*100, 1)
@@ -63,10 +63,7 @@ Then execute the program as `python analyze_logs.py`. The output is written to t
 ## Example Output
 ```
 Top three favorite articles:
-
 "Candidate is jerk, alleges rival" --- 338647
-
 "Bears love berries, alleges bear" --- 253801
-
 "Bad things gone, say good people" --- 170098
 ```
