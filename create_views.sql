@@ -22,7 +22,7 @@ CREATE OR REPLACE VIEW failed_calls_per_day as
 
 -- Create a view of the percentage of failed calls per day.
 CREATE OR REPLACE VIEW percent_failed_calls as
-    SELECT round((f.failed_calls/t.all_calls*1.0)*100, 1)
+    SELECT round((f.failed_calls*1.0/t.all_calls)*100, 1)
     as per_failed_calls, f.date
     FROM failed_calls_per_day as f, total_calls_per_day as t
     WHERE f.date=t.date;
