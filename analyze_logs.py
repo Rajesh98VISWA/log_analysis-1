@@ -5,6 +5,7 @@ import psycopg2
 
 DBNAME = "news"
 
+
 def connect():
     """
     Create a connection to the database, defined by DBNAME,
