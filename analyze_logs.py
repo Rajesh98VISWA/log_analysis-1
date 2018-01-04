@@ -58,7 +58,7 @@ def favorite_articles():
     # print top three favorite articles
     print "Top three favorite articles:"
     for i in range(3):
-        print "\""+result[i][0]+"\"", '---', result[i][1]
+        print "\""+result[i][0]+"\"", '---', result[i][1], "views"
 
 
 def popular_authors():
@@ -81,7 +81,7 @@ def popular_authors():
     # print authors of most popular articles
     print "\nMost popular article authors:"
     for i in range(len(result)):
-        print "\""+result[i][0]+"\"", '---', result[i][1]
+        print "\""+result[i][0]+"\"", '---', result[i][1], "views"
 
 
 def get_total_calls_per_day():
@@ -151,7 +151,7 @@ def error_request_threshold():
     # print days with more than 1% error request rate
     print "\nDays where more than 1% of requests lead to errors:"
     for i in range(len(result)):
-        print "\""+str(result[i][0])+"\"", '---', result[i][1]
+        print "\""+result[i][1]+' --- '+str(result[i][0])+"% errors\""
 
 
 if __name__ == '__main__':
